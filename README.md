@@ -1,0 +1,1 @@
+To build you need following dependencies installed: SDL3, VulkanSDK, glm
