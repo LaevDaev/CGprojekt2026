@@ -1,16 +1,15 @@
 cmake_minimum_required(VERSION 3.19)
 
 project(CG2026
-    LANGUAGES CXX
+    LANGUAGES C CXX
 )
 
-find_package(Vulkan REQUIRED)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+find_package(OpenGL REQUIRED)
 find_package(SDL3 REQUIRED)
-find_package(glm REQUIRED)
 
-add_executable(cg2026)
 
-target_sources(cg2026 PRIVATE 
-    src/main.cpp)
-
-target_link_libraries(cg2026 PRIVATE Vulkan::Vulkan SDL3::SDL3 glm)
+add_executable(cg2026 src/main.cpp src/glad.c)
+target_include_directories(cg2026 PRIVATE include)
+target_link_libraries(cg2026 PRIVATE OpenGL::GL SDL3::SDL3)
